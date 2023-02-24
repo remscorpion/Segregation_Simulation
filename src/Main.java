@@ -19,25 +19,30 @@ public class Main {
         // TODO: initialize map: randomly place red and blue on the map
         initialize_map(SIZE, EMPTY, RATE_BLUE, RATE_RED, MAP);
 
-        // TODO: draw the grid
+        // set StdDraw
         StdDraw.setXscale(0, SIZE);
         StdDraw.setYscale(0, SIZE);
+
+        // TODO: draw the grid (NOT COMPLETED)
         draw();
 
 
         // TODO: start simulation
         // TODO: keep running until no mor e movement will happen
         while (true) {
+            // TODO: find all unsatisfied agents
             List<int[]> unsatisfied = find_unsatisfied(SIZE, MAP, SATISFIED);
+
             if (unsatisfied.size() != 0) {
+                // if there are any unsatisfied agents, help them relocate
                 move(unsatisfied, MAP);
+                // draw the new map
                 draw();
             } else {
+                // all agents are satisfied, no more move, break the while loop
                 break;
             }
         }
-
-
     }
 
     /**
