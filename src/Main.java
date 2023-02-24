@@ -87,7 +87,9 @@ public class Main {
             }
         }
 
-        // check
+        /*  check, in case something wrong
+            when initialization failed, the program will exit(end) and return 1 as error number
+         */
         if (countBlue != numBlue || countRed != numRed || countEmpty != numEmpty) {
             System.out.println("initialization failed");
             exit(1);
