@@ -16,6 +16,7 @@ public class Main {
         final double EMPTY = 0.1;
         int[][] MAP = new int[SIZE][SIZE]; // red -> 1 | blue -> -1 | empty -> 0
 
+        StdDraw.enableDoubleBuffering(); // Written by Alain
 
         // TODO: initialize map: randomly place red and blue on the map
         initialize_map(SIZE, EMPTY, RATE_BLUE, MAP);
@@ -50,6 +51,7 @@ public class Main {
      * Draw the map
      */
     public static void draw(int [][]MAP, int SIZE) {
+        StdDraw.clear();
         for(int y = 0; y < SIZE; y++){
             for(int x = 0; x < SIZE; x++){
                 StdDraw.setPenColor(Color.BLACK);
@@ -63,6 +65,7 @@ public class Main {
             } // end for x
 
         } // end for y
+        StdDraw.show();
     }
 
     /**
