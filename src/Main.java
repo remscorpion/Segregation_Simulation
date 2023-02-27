@@ -18,14 +18,14 @@ public class Main {
 
 
         // TODO: initialize map: randomly place red and blue on the map
-        initialize_map(SIZE, EMPTY, RATE_BLUE, RATE_RED, MAP);
+        initialize_map(SIZE, EMPTY, RATE_BLUE, MAP);
 
         // set StdDraw
         StdDraw.setXscale(0, SIZE);
         StdDraw.setYscale(0, SIZE);
 
         // TODO: draw the grid (NOT COMPLETED)
-        draw(MAP);
+        draw(MAP, SIZE);
 
 
         // TODO: start simulation
@@ -38,26 +38,23 @@ public class Main {
                 // if there are any unsatisfied agents, help them relocate
                 move(unsatisfied, MAP);
                 // draw the new map
-                draw(MAP);
+                draw(MAP, SIZE);
             } else {
                 // all agents are satisfied, no more move, break the while loop
                 break;
             }
-
-            break;
         }
     }
 
     /**
      * Draw the map
      */
-    public static void draw(int [][]z) {
-        int x=0,y=0;
-        for(;y<30;y++){
-            for(x=0;x<30;x++){
+    public static void draw(int [][]MAP, int SIZE) {
+        for(int y = 0; y < SIZE; y++){
+            for(int x = 0; x < SIZE; x++){
                 StdDraw.setPenColor(Color.BLACK);
                 StdDraw.square(x+1,y+1,1);
-                switch (z[x][y]) {
+                switch (MAP[x][y]) {
                     case 1 -> StdDraw.setPenColor(Color.RED);
                     case -1 -> StdDraw.setPenColor(Color.BLUE);
                     case 0 -> StdDraw.setPenColor(Color.WHITE);
@@ -71,7 +68,7 @@ public class Main {
     /**
      * Initialize the map, randomly arrange two colors on the map
      */
-    public static void initialize_map(int SIZE, double EMPTY, double RATE_BLUE, double RATE_RED, int[][] MAP) {
+    public static void initialize_map(int SIZE, double EMPTY, double RATE_BLUE, int[][] MAP) {
         int numEmpty = (int) (SIZE * SIZE * EMPTY);
         int numBlue = (int) ((SIZE * SIZE - numEmpty) * RATE_BLUE);
         int numRed = SIZE * SIZE - numEmpty - numBlue;
