@@ -1,3 +1,9 @@
+/*
+    Pair Project: Segregation Simulation
+    Tomohiro & Ed
+    CS 172
+ */
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
