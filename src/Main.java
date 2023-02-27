@@ -11,10 +11,11 @@ import java.util.List;
 import static java.lang.System.exit;
 
 public class Main {
-    // initialize param
-
-
+    /**
+     * Main method
+     */
     public static void main(String[] args) {
+        // initialize param
         final int SIZE = 30;
         final double SATISFIED = 0.3;
         final double RATE_RED = 0.5;
