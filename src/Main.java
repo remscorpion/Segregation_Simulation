@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Main {
         StdDraw.setYscale(0, SIZE);
 
         // TODO: draw the grid (NOT COMPLETED)
-        draw();
+        draw(MAP);
 
 
         // TODO: start simulation
@@ -37,7 +38,7 @@ public class Main {
                 // if there are any unsatisfied agents, help them relocate
                 move(unsatisfied, MAP);
                 // draw the new map
-                draw();
+                draw(MAP);
             } else {
                 // all agents are satisfied, no more move, break the while loop
                 break;
@@ -48,8 +49,26 @@ public class Main {
     /**
      * Draw the map
      */
-    public static void draw() {
-
+    public static void draw(int [][]z) {
+        int x=0,y=0;
+        for(;y<30;y++){
+            for(x=0;x<30;x++){
+                StdDraw.setPenColor(Color.BLACK);
+                StdDraw.square(x,y,1);
+                if(z[x][y]==1) {
+                    StdDraw.setPenColor(Color.RED);
+                    StdDraw.filledRectangle(x,y,1,1);
+                }
+                else if(z[x][y]==-1) {
+                    StdDraw.setPenColor(Color.BLUE);
+                    StdDraw.filledRectangle(x,y,1,1);
+                }
+                else{
+                    StdDraw.setPenColor(Color.white);
+                    StdDraw.filledRectangle(x,y,1,1);
+                } // end if else
+            } // end for x
+        } // end for y
     }
 
     /**
@@ -57,8 +76,8 @@ public class Main {
      */
     public static void initialize_map(int SIZE, double EMPTY, double RATE_BLUE, double RATE_RED, int[][] MAP) {
         int numEmpty = (int) (SIZE * SIZE * EMPTY);
-        int numBlue = (int) (SIZE * SIZE * RATE_BLUE);
-        int numRed = (int) (SIZE * SIZE * RATE_RED);
+        int numBlue = (int) ((SIZE * SIZE - numEmpty) * RATE_BLUE);
+        int numRed = SIZE * SIZE - numEmpty - numBlue;
 
         int countEmpty = SIZE * SIZE;
         int countBlue = 0;
