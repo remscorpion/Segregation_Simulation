@@ -43,6 +43,8 @@ public class Main {
                 // all agents are satisfied, no more move, break the while loop
                 break;
             }
+
+            break;
         }
     }
 
@@ -54,20 +56,15 @@ public class Main {
         for(;y<30;y++){
             for(x=0;x<30;x++){
                 StdDraw.setPenColor(Color.BLACK);
-                StdDraw.square(x,y,1);
-                if(z[x][y]==1) {
-                    StdDraw.setPenColor(Color.RED);
-                    StdDraw.filledRectangle(x,y,1,1);
-                }
-                else if(z[x][y]==-1) {
-                    StdDraw.setPenColor(Color.BLUE);
-                    StdDraw.filledRectangle(x,y,1,1);
-                }
-                else{
-                    StdDraw.setPenColor(Color.white);
-                    StdDraw.filledRectangle(x,y,1,1);
-                } // end if else
+                StdDraw.square(x+1,y+1,1);
+                switch (z[x][y]) {
+                    case 1 -> StdDraw.setPenColor(Color.RED);
+                    case -1 -> StdDraw.setPenColor(Color.BLUE);
+                    case 0 -> StdDraw.setPenColor(Color.WHITE);
+                } // end switch
+                StdDraw.filledRectangle(x+1,y+1,1,1);
             } // end for x
+
         } // end for y
     }
 
