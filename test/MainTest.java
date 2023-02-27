@@ -15,6 +15,11 @@ class MainTest {
 
     @org.junit.jupiter.api.Test
     void initialize_map() {
+        /** has been tested in Main
+         *  other code will not be executed when the initialization was failed
+         *  program will exit when the initialization was failed
+         */
+
     }
 
     @org.junit.jupiter.api.Test
